@@ -1,0 +1,107 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is a sample server for AMX.",
+    "version": "1.0.0",
+    "title": "Swagger AMX"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Course",
+      "description": "Course Routes"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/course": {
+      "get": {
+        "tags": ["course"],
+        "summary": "This service returns all the courses based on query params.",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/name"
+          },
+          {
+            "$ref": "#/components/parameters/level"
+          },
+          {
+            "$ref": "#/components/parameters/country"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/allCourses": {
+      "get": {
+        "tags": ["course"],
+        "summary": "This service returns all the courses.",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "components": {
+    "parameters": {
+      "name": {
+        "name": "name",
+        "in": "query",
+        "description": "name",
+        "type": "string",
+        "default": "University 2 Lorem ipsum"
+      },
+      "level": {
+        "name": "level",
+        "in": "query",
+        "description": "level",
+        "type": "string",
+        "default": "Diploma"
+      },
+      "country": {
+        "name": "country",
+        "in": "query",
+        "description": "Country",
+        "default": "United States of America",
+        "type": "string"
+      }
+    }
+  }
+}
